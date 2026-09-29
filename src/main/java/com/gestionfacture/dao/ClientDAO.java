@@ -10,6 +10,25 @@ import java.util.List;
 
 public class ClientDAO {
 
+    public Client recupererParId(int id) throws SQLException {
+        String sql = "SELECT * FROM client WHERE id = ?";
+        try (Connection cnx = ConnexionBD.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Client c = new Client();
+                    c.setId(rs.getInt("id"));
+                    c.setNom(rs.getString("nom"));
+                    c.setTelephone(rs.getString("telephone"));
+                    c.setEmail(rs.getString("email"));
+                    return c;
+                }
+            }
+        }
+        return null;
+    }
+
     public void ajouter(Client client) throws SQLException {
         String sql = "INSERT INTO client (nom, telephone, email) VALUES (?, ?, ?)";
         try (Connection cnx = ConnexionBD.getConnection();
