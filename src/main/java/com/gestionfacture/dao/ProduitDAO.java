@@ -21,6 +21,25 @@ public class ProduitDAO {
         }
     }
 
+    public Produit recupererParId(int id) throws SQLException {
+        String sql = "SELECT * FROM produit WHERE id = ?";
+        try (Connection cnx = ConnexionBD.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Produit p = new Produit();
+                    p.setId(rs.getInt("id"));
+                    p.setDesignation(rs.getString("designation"));
+                    p.setPrixUnitaire(rs.getDouble("prix_unitaire"));
+                    p.setStock(rs.getInt("stock"));
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
+
     public List<Produit> listerTous() throws SQLException {
         List<Produit> produits = new ArrayList<>();
         String sql = "SELECT * FROM produit";

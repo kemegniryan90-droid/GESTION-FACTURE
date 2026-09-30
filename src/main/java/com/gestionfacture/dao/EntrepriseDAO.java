@@ -21,6 +21,25 @@ public class EntrepriseDAO {
         }
     }
 
+    public Entreprise recupererParId(int id) throws SQLException {
+        String sql = "SELECT * FROM entreprise WHERE id = ?";
+        try (Connection cnx = ConnexionBD.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Entreprise e = new Entreprise();
+                    e.setId(rs.getInt("id"));
+                    e.setNom(rs.getString("nom"));
+                    e.setAdresse(rs.getString("adresse"));
+                    e.setTelephone(rs.getString("telephone"));
+                    return e;
+                }
+            }
+        }
+        return null;
+    }
+
     public List<Entreprise> listerTous() throws SQLException {
         List<Entreprise> entreprises = new ArrayList<>();
         String sql = "SELECT * FROM entreprise";
