@@ -4,31 +4,34 @@
 <html>
 <head>
     <title>Liste des produits</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
     <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Liste des produits</h1>
-    <a href="${pageContext.request.contextPath}/produits/ajouter">Ajouter un produit</a>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Désignation</th>
-            <th>Prix unitaire</th>
-            <th>Stock</th>
-            <th>Actions</th>
-        </tr>
-        <c:forEach var="produit" items="${produits}">
+    <div class="contenu">
+        <a class="bouton" href="${pageContext.request.contextPath}/produits/ajouter">Ajouter un produit</a>
+        <table>
             <tr>
-                <td>${produit.id}</td>
-                <td>${produit.designation}</td>
-                <td>${produit.prixUnitaire} FCFA</td>
-                <td>${produit.stock}</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/produits/supprimer?id=${produit.id}"
-                       onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
-                </td>
+                <th>ID</th>
+                <th>Désignation</th>
+                <th>Prix unitaire</th>
+                <th>Stock</th>
+                <th>Actions</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach var="produit" items="${produits}">
+                <tr>
+                    <td>${produit.id}</td>
+                    <td>${produit.designation}</td>
+                    <td>${produit.prixUnitaire} FCFA</td>
+                    <td>${produit.stock}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/produits/supprimer?id=${produit.id}"
+                           onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </body>
 </html>

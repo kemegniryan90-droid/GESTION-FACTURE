@@ -4,30 +4,33 @@
 <html>
 <head>
     <title>Liste des factures</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
     <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Liste des factures</h1>
-    <a href="${pageContext.request.contextPath}/factures/nouvelle">Nouvelle facture</a>
-    <table border="1">
-        <tr>
-            <th>Numéro</th>
-            <th>Date</th>
-            <th>Client</th>
-            <th>Total</th>
-            <th>Actions</th>
-        </tr>
-        <c:forEach var="facture" items="${factures}">
+    <div class="contenu">
+        <a class="bouton" href="${pageContext.request.contextPath}/factures/nouvelle">Nouvelle facture</a>
+        <table>
             <tr>
-                <td>${facture.numero}</td>
-                <td>${facture.date}</td>
-                <td>${nomsClients[facture.idClient]}</td>
-                <td>${facture.total} FCFA</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/factures/pdf?id=${facture.id}">Télécharger PDF</a>
-                </td>
+                <th>Numéro</th>
+                <th>Date</th>
+                <th>Client</th>
+                <th>Total</th>
+                <th>Actions</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach var="facture" items="${factures}">
+                <tr>
+                    <td>${facture.numero}</td>
+                    <td>${facture.date}</td>
+                    <td>${nomsClients[facture.idClient]}</td>
+                    <td>${facture.total} FCFA</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/factures/pdf?id=${facture.id}">Télécharger PDF</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </body>
 </html>

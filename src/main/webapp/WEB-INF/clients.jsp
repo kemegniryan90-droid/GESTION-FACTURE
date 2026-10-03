@@ -4,31 +4,34 @@
 <html>
 <head>
     <title>Liste des clients</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
     <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Liste des clients</h1>
-    <a href="${pageContext.request.contextPath}/clients/ajouter">Ajouter un client</a>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Téléphone</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-        <c:forEach var="client" items="${clients}">
+    <div class="contenu">
+        <a class="bouton" href="${pageContext.request.contextPath}/clients/ajouter">Ajouter un client</a>
+        <table>
             <tr>
-                <td>${client.id}</td>
-                <td>${client.nom}</td>
-                <td>${client.telephone}</td>
-                <td>${client.email}</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/clients/modifier?id=${client.id}">Modifier</a>
-                    <a href="${pageContext.request.contextPath}/clients/supprimer?id=${client.id}">Supprimer</a>
-                </td>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Actions</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach var="client" items="${clients}">
+                <tr>
+                    <td>${client.id}</td>
+                    <td>${client.nom}</td>
+                    <td>${client.telephone}</td>
+                    <td>${client.email}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/clients/modifier?id=${client.id}">Modifier</a>
+                        <a href="${pageContext.request.contextPath}/clients/supprimer?id=${client.id}">Supprimer</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </body>
 </html>
