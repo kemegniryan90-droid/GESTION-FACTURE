@@ -6,6 +6,7 @@
     <title>Liste des factures</title>
 </head>
 <body>
+    <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Liste des factures</h1>
     <a href="${pageContext.request.contextPath}/factures/nouvelle">Nouvelle facture</a>
     <table border="1">

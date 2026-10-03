@@ -6,6 +6,7 @@
     <title>Nouvelle facture</title>
 </head>
 <body>
+    <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Nouvelle facture</h1>
     <form action="${pageContext.request.contextPath}/factures/nouvelle" method="post">
 

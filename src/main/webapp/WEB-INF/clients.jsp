@@ -6,8 +6,9 @@
     <title>Liste des clients</title>
 </head>
 <body>
+    <%@ include file="/WEB-INF/menu.jsp" %>
     <h1>Liste des clients</h1>
-    <a href="clients/ajouter">Ajouter un client</a>
+    <a href="${pageContext.request.contextPath}/clients/ajouter">Ajouter un client</a>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -23,8 +24,8 @@
                 <td>${client.telephone}</td>
                 <td>${client.email}</td>
                 <td>
-                    <a href="clients/modifier?id=${client.id}">Modifier</a>
-                    <a href="clients/supprimer?id=${client.id}">Supprimer</a>
+                    <a href="${pageContext.request.contextPath}/clients/modifier?id=${client.id}">Modifier</a>
+                    <a href="${pageContext.request.contextPath}/clients/supprimer?id=${client.id}">Supprimer</a>
                 </td>
             </tr>
         </c:forEach>

@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Ajouter un client</h1>
-    <form action="clients/ajouter" method="post">
+    <form action="${pageContext.request.contextPath}/clients/ajouter" method="post">
         <label>Nom :</label>
         <input type="text" name="nom" required><br>
 
@@ -18,6 +18,6 @@
 
         <button type="submit">Enregistrer</button>
     </form>
-    <a href="clients">Retour à la liste</a>
+    <a href="${pageContext.request.contextPath}/clients">Retour à la liste</a>
 </body>
 </html>
